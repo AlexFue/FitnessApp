@@ -12,7 +12,6 @@ public class CreateAccountUnitTest {
     public void verifyAccountEqualsTrue() {
         String username = "alexdummy";
         String password = "123";
-        // initialize db
         assertEquals(CreateAccount.verifyAccount(username, password), true);
     }
 
@@ -21,7 +20,6 @@ public class CreateAccountUnitTest {
     public void verifyAccountEqualsFalse() {
         String username = "alex";
         String password = "123";
-        // initialize db
         assertEquals(CreateAccount.verifyAccount(username, password), true);
     }
 }
