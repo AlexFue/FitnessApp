@@ -1,4 +1,34 @@
 package com.example.fitnessapp;
 
-public class FitnessAppDB {
+import android.content.Context;
+
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+
+public abstract class FitnessAppDB extends RoomDatabase {
+    private static FitnessAppDB sInstance;
+    public abstract UserDao user();
+    public abstract ExerciseDao exercise();
+
+    public static synchronized FitnessAppDB getInstance(Context context){
+        if(sInstance == null){
+            sInstance = Room.databaseBuilder(context.getApplicationContext(),
+                    FitnessAppDB.class,
+                    "fitnessapp.db")
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build();
+        }
+        return sInstance;
+    }
+
+    public void seed() { // prepopulating database with some users and books
+        if (user().count() == 0) {
+            User alex = new User("alex", "123");
+            User ivan = new User("ivan", "123");
+            User noah = new User("noah", "123");
+            User jeremy = new User("jeremy", "123");
+            long[] user_ids = user().insertUsers(alex, ivan, noah, jeremy);
+        }
+    }
 }
