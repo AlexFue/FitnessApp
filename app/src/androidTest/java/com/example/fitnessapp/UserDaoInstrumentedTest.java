@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class UserDaoInstrumentedTest {
 
-    FitnessApp db;
+    FitnessAppDB db;
 
     @Test
     public void test() {
@@ -36,8 +36,8 @@ public class UserDaoInstrumentedTest {
     @Test
     public void FindUsernameTest() {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        db = FitnessApp.getInstance(appContext);
-        User found = db.user().findUsername("alex");
+        db = FitnessAppDB.getInstance(appContext);
+        User found = db.user().findUserByUsername("alex");
         assert(found != null);
     }
 }
