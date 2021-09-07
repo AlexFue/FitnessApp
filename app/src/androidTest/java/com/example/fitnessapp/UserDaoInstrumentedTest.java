@@ -34,7 +34,7 @@ public class UserDaoInstrumentedTest {
     }
 
     @Test
-    public void UserfindUsernameTest() {
+    public void FindUsernameTest() {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         db = FitnessApp.getInstance(appContext);
         User found = db.user().findUsername("alex");
