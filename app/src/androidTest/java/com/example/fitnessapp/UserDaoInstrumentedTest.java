@@ -32,7 +32,7 @@ public class UserDaoInstrumentedTest {
 
         assert(db.user().count() > before_add);
 
-        db.user().removeUser("user1");
+        db.user().deleteByUsername("user1");
         assert(db.user().count() == before_add);
 
     }
