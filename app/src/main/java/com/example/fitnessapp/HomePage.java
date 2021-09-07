@@ -23,7 +23,7 @@ public class HomePage extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomePage.this, CreateAccount.class);
+                Intent i = new Intent(HomePage.this, LoginPage.class);
                 startActivity(i);
             }
         });
@@ -31,8 +31,8 @@ public class HomePage extends AppCompatActivity {
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomePage.this, Login.class);
-                startActivity(i);
+//                Intent i = new Intent(HomePage.this, CreateAccount.class);
+//                startActivity(i);
             }
         });
     }
