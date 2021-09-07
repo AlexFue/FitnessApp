@@ -23,6 +23,17 @@ public class UserDaoInstrumentedTest {
     // adds user to db and checks its therer
     @Test
     public void UserDaoTest() {
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        db = FitnessAppDB.getInstance(appContext);
+
+        User u1 = new User("user1", "password1");
+        int before_add = db.user().count();
+        db.user().addUser(u1);
+
+        assert(db.user().count() > before_add);
+
+        db.user().removeUser("user1");
+        assert(db.user().count() == before_add);
 
     }
 
