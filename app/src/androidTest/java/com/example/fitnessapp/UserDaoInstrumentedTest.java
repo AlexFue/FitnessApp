@@ -41,7 +41,7 @@ public class UserDaoInstrumentedTest {
     public void UserCredentialsTest() {
         User u1 = new User("user1", "password1");
         assertEquals(u1.getUsername(), "user1");
-        assertEquals(u1.getPassword(), "password");
+        assertEquals(u1.getPassword(), "password1");
     }
 
     @Test
