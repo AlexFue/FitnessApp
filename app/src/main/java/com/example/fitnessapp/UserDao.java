@@ -1,11 +1,13 @@
 package com.example.fitnessapp;
 
 import androidx.room.Delete;
+import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
 import java.util.List;
 
+@Dao
 public interface UserDao {
 
     // returns number of rows in users table
