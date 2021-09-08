@@ -2,13 +2,15 @@ package com.example.fitnessapp;
 
 import android.content.Context;
 
+import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+@Database(entities = {User.class}, version = 1, exportSchema = false)
 public abstract class FitnessAppDB extends RoomDatabase {
     private static FitnessAppDB sInstance;
     public abstract UserDao user();
-    public abstract ExerciseDao exercise();
+//    public abstract ExerciseDao exercise();
 
     public static synchronized FitnessAppDB getInstance(Context context){
         if(sInstance == null){
