@@ -27,4 +27,7 @@ public interface UserDao {
 
     @Insert
     long[] insertUsers(User... users);
+
+    @Query("DELETE FROM users WHERE username = :username")
+    void deleteByUsername(String username);
 }
