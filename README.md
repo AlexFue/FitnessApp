@@ -140,10 +140,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Alex Espinoza-Fuentes - [Linkedin](https://www.linkedin.com/in/alex-espinoza-fuentes/) - aespinozafuentes@csumb.edu
-Noah Ahmed - [Linkedin](https://www.linkedin.com/in/noa316/) - noahmed@csumb.edu
-Jeremy Meharg [Linkedin](https://www.linkedin.com/in/jeremy-meharg/) - jmeharg@csumb.edu
-Ivan Mendoza [Linkedin](https://www.linkedin.com/in/ivanmendoza7/) - imendozaojeda@csumb.edu
+Alex Espinoza-Fuentes - [Linkedin](https://www.linkedin.com/in/alex-espinoza-fuentes/) - aespinozafuentes@csumb.edu <br />
+Noah Ahmed - [Linkedin](https://www.linkedin.com/in/noa316/) - noahmed@csumb.edu <br />
+Jeremy Meharg [Linkedin](https://www.linkedin.com/in/jeremy-meharg/) - jmeharg@csumb.edu <br />
+Ivan Mendoza [Linkedin](https://www.linkedin.com/in/ivanmendoza7/) - imendozaojeda@csumb.edu <br />
+
 
 Project Link: [https://github.com/AlexFue/FitnessApp)
 
