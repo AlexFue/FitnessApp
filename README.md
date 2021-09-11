@@ -15,12 +15,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -138,12 +132,12 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 
 <!-- CONTACT -->
-## Contact
+## Contact/Current Contributers
 
-Alex Espinoza-Fuentes - [Linkedin](https://www.linkedin.com/in/alex-espinoza-fuentes/) - aespinozafuentes@csumb.edu <br />
-Noah Ahmed - [Linkedin](https://www.linkedin.com/in/noa316/) - noahmed@csumb.edu <br />
-Jeremy Meharg [Linkedin](https://www.linkedin.com/in/jeremy-meharg/) - jmeharg@csumb.edu <br />
-Ivan Mendoza [Linkedin](https://www.linkedin.com/in/ivanmendoza7/) - imendozaojeda@csumb.edu <br />
+Alex Espinoza-Fuentes - [Linkedin](https://www.linkedin.com/in/alex-espinoza-fuentes/) - [AlexFue](https://github.com/AlexFue) <br />
+Noah Ahmed - [Linkedin](https://www.linkedin.com/in/noa316/) - [noa316](https://github.com/noa316) <br />
+Jeremy Meharg [Linkedin](https://www.linkedin.com/in/jeremy-meharg/) - [JeremyMeh](https://github.com/JeremyMeh) <br />
+Ivan Mendoza [Linkedin](https://www.linkedin.com/in/ivanmendoza7/) - [ivan776](https://github.com/ivan776) <br />
 
 
 Project Link: [https://github.com/AlexFue/FitnessApp)
