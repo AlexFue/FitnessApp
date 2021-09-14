@@ -10,6 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import org.jsoup.Jsoup;
+
 import java.util.List;
 
 public class MainWorkoutPage extends AppCompatActivity {
@@ -46,14 +48,26 @@ public class MainWorkoutPage extends AppCompatActivity {
                 ApiResponse post = response.body();
 
 
-                content += "\n\nExercise count: " + post.getCount() + "\n\n";
+                content += "\nExercise count: " + post.getCount() + "\n\n";
 
                 List<Results> results = post.getResults();
 
                 for (Results result : results) {
-                    content += "Exercise ID: " + result.getId() + "\n";
                     content += "Exercise Name: " + result.getName() + "\n";
-                    content += "Exercise Description" + result.getDescription() + "\n";
+                    content += "Description: " + html2text(result.getDescription()) + "\n";
+                    content += "Category: " + result.getCategory().getName() + "\n";
+                    content += "Equipment Needed: ";
+                    String equipmentStr = "";
+                    List<Equipment> equipments = result.getEquipment();
+                    for (Equipment equipment : equipments) {
+                        equipmentStr += equipment.getName() + ", ";
+                    }
+                    if (equipmentStr.length() > 1) {
+                        equipmentStr = equipmentStr.substring(0, equipmentStr.length() - 2);
+                    }
+
+                    content += equipmentStr + "\n\n";
+
                 }
 
                 textViewResult.append(content);
@@ -64,6 +78,9 @@ public class MainWorkoutPage extends AppCompatActivity {
                 textViewResult.setText(t.getMessage());
             }
         });
+    }
+    public static String html2text(String html) {
+        return Jsoup.parse(html).text();
     }
 }
 

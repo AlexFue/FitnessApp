@@ -1,12 +1,19 @@
 package com.example.fitnessapp;
 
+import java.util.List;
+
 public class Results {
-    private int id;
     private String name;
     private String description;
+    private Category category;
+    private List<Equipment> equipment;
 
-    public int getId() {
-        return id;
+    public Category getCategory() {
+        return category;
+    }
+
+    public List<Equipment> getEquipment() {
+        return equipment;
     }
 
     public String getName() {
