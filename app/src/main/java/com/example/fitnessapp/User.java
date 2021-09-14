@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+
 @Entity(tableName = "users")
 public class User {
     @PrimaryKey(autoGenerate = true)
@@ -15,9 +17,19 @@ public class User {
     @ColumnInfo(name="password")
     private String mPassword;
 
+    @ColumnInfo(name="exercises")
+    private ArrayList<Exercise> mExercises;
+
+    public User(String mUsername, String mPassword, ArrayList<Exercise> mExercises){
+        this.mUsername = mUsername;
+        this.mPassword = mPassword;
+        this.mExercises = mExercises;
+    }
+
     public User(String mUsername, String mPassword){
         this.mUsername = mUsername;
         this.mPassword = mPassword;
+        this.mExercises = new ArrayList<Exercise>();
     }
 
     public int getUserId() {
@@ -46,5 +58,13 @@ public class User {
 
     public String toSting(){
         return "username: " + mUsername + " password: " + mPassword;
+    }
+
+    public ArrayList<Exercise> getExercises() {
+        return mExercises;
+    }
+
+    public void addExercise(Exercise ex) {
+        mExercises.add(ex);
     }
 }
