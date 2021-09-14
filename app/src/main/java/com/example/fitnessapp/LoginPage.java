@@ -43,4 +43,8 @@ public class LoginPage extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), error_msg, Toast.LENGTH_LONG).show();
         }
     }
+
+    public static String isValidCredentials(String username, String password, FitnessAppDB db) {
+        return "reue";
+    }
 }
