@@ -37,4 +37,13 @@ public interface UserDao {
 
     @Query("UPDATE users SET exercises = :exercises WHERE username = :username")
     void updateExercisesForUser(ArrayList<Exercise> exercises, String username);
+
+    @Query("UPDATE users SET username = :username, password = :password WHERE username = :username")
+    void updateUsernameAndPassword(String username, String password);
+
+    @Query("UPDATE users SET username = :username WHERE username = :username")
+    void updateUsername(String username);
+
+    @Query("UPDATE users SET password = :password WHERE username = :username")
+    void updatePassword(String username, String password);
 }
