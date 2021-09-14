@@ -7,20 +7,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/user_welcome"
-        android:textColor="@color/purple_200"
-        android:textSize="32dp"
-        android:text="Welcome!"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Username: " />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/username_change"
+        android:id="@+id/edit_user"
         android:text="current_username" />
 
     <TextView
@@ -31,7 +23,18 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/password_change"
+        android:id="@+id/edit_password"
+        android:text="current_password"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retype Password: "/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/retype_password"
         android:text="current_password"/>
 
     <Button
