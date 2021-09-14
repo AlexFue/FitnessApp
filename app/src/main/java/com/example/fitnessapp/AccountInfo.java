@@ -8,15 +8,14 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AccountInfo extends AppCompatActivity {
-    private FitnessAppDB fdb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_account);
-        fdb = FitnessAppDB.getInstance(this);
-        String username = fdb.user().getUsername();
-        String password = fdb.user().password();
+
+        String username = bun.username;
+        String password = bun.password;
 
         TextView welcome = findViewById(R.id.user_welcome);
         TextView user_chng = findViewById(R.id.username_change);
