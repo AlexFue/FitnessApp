@@ -14,8 +14,10 @@ public class AccountInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_account);
 
-        String username = bun.username;
-        String password = bun.password;
+        Bundle bund = bun;
+
+        String username = bund.username;
+        String password = bund.password;
 
         TextView welcome = findViewById(R.id.user_welcome);
         TextView user_chng = findViewById(R.id.username_change);
