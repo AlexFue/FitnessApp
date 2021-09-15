@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 @RunWith(AndroidJUnit4.class)
 public class UserDaoInstrumentedTest {
 
@@ -46,5 +48,38 @@ public class UserDaoInstrumentedTest {
         db.seed();
         User found = db.user().findUserByUsername("alex");
         assert(found != null);
+    }
+
+    @Test
+    public void getUserExercise() {
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        db = FitnessAppDB.getInstance(appContext);
+
+        User u1 = new User("user1", "password");
+        db.user().addUser(u1);
+
+        User copyOfU1 = db.user().findUserByUsername("user1");
+        ArrayList<Exercise> ex;
+        ex = copyOfU1.getExercises();
+        assert(ex != null);
+
+        db.user().deleteByUsername("user1");
+    }
+
+    @Test
+    public void addExerciseToUser() {
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        db = FitnessAppDB.getInstance(appContext);
+
+        User u1 = new User("user1", "password");
+        db.user().addUser(u1);
+
+        Exercise exercise = new Exercise("planks", "get in plank position and hold", "mat", "core");
+        User copyOfU1 = db.user().findUserByUsername("user1");
+        ArrayList<Exercise> u1Exercises= copyOfU1.getExercises();
+        u1Exercises.add(exercise);
+        db.user().updateExercises(u1Exercises, "user1");
+
+        assert(u1Exercises.size() == db.user().findUserByUsername("user1").getExercises().size());
     }
 }
