@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 @Entity(tableName = "users")
 public class User {
+    private ArrayList<Exercise> mExercises;
+
     @PrimaryKey(autoGenerate = true)
     private int mUserId;
 
@@ -16,15 +18,6 @@ public class User {
 
     @ColumnInfo(name="password")
     private String mPassword;
-
-    @ColumnInfo(name="exercises")
-    private ArrayList<Exercise> mExercises;
-
-    public User(String mUsername, String mPassword, ArrayList<Exercise> mExercises){
-        this.mUsername = mUsername;
-        this.mPassword = mPassword;
-        this.mExercises = mExercises;
-    }
 
     public User(String mUsername, String mPassword){
         this.mUsername = mUsername;
@@ -46,6 +39,10 @@ public class User {
 
     public void setUserId(int mUserId) {
         this.mUserId = mUserId;
+    }
+
+    public void setExercises(ArrayList<Exercise> mExercises) {
+        this.mExercises = mExercises;
     }
 
     public void setUsername(String mUsername) {

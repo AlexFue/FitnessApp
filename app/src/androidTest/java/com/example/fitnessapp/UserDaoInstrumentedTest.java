@@ -15,11 +15,6 @@ public class UserDaoInstrumentedTest {
 
     FitnessAppDB db;
 
-    @Test
-    public void test() {
-        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-    }
-
     // adds user to db and checks its therer
     @Test
     public void UserDaoTest() {
@@ -48,6 +43,7 @@ public class UserDaoInstrumentedTest {
     public void FindUsernameTest() {
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         db = FitnessAppDB.getInstance(appContext);
+        db.seed();
         User found = db.user().findUserByUsername("alex");
         assert(found != null);
     }

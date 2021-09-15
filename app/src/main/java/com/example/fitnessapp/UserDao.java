@@ -32,11 +32,11 @@ public interface UserDao {
     @Query("DELETE FROM users WHERE username = :username")
     void deleteByUsername(String username);
 
-    @Query("SELECT exercises FROM users WHERE username = :username")
-    ArrayList<Exercise> getUserExercises(String username);
+//    @Query("SELECT exercises FROM users WHERE username = :username")
+//    ArrayList<Exercise> getUserExercises(String username);
 
-    @Query("UPDATE users SET exercises = :exercises WHERE username = :username")
-    void updateExercisesForUser(ArrayList<Exercise> exercises, String username);
+    @Query("UPDATE users SET mExercises = :exercises WHERE username = :username")
+    void updateExercises(ArrayList<Exercise> exercises, String username);
 
     @Query("UPDATE users SET username = :username, password = :password WHERE username = :username")
     void updateUsernameAndPassword(String username, String password);
