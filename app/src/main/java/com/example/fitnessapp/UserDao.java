@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Dao
@@ -30,4 +31,19 @@ public interface UserDao {
 
     @Query("DELETE FROM users WHERE username = :username")
     void deleteByUsername(String username);
+
+//    @Query("SELECT exercises FROM users WHERE username = :username")
+//    ArrayList<Exercise> getUserExercises(String username);
+
+    @Query("UPDATE users SET mExercises = :exercises WHERE username = :username")
+    void updateExercises(ArrayList<Exercise> exercises, String username);
+
+    @Query("UPDATE users SET username = :username, password = :password WHERE username = :username")
+    void updateUsernameAndPassword(String username, String password);
+
+    @Query("UPDATE users SET username = :username WHERE username = :username")
+    void updateUsername(String username);
+
+    @Query("UPDATE users SET password = :password WHERE username = :username")
+    void updatePassword(String username, String password);
 }
