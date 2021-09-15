@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 
 public interface ExercisesApi {
 
-    @GET("exerciseinfo")
+    @GET("exerciseinfo/?language=2")
     Call<ApiResponse> getExercises();
 }
