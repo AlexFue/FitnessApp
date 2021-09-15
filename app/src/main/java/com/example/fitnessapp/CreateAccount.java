@@ -43,7 +43,7 @@ public class CreateAccount extends AppCompatActivity {
                         @Override
                         public void run() {
                             CreateAccount.this.finish();
-                            Intent i = new Intent(CreateAccount.this, MainActivity.class);
+                            Intent i = new Intent(CreateAccount.this, MainWorkoutPage.class);
                             Bundle bun = new Bundle();
                             bun.putString("username", username);
                             bun.putString("password", password);
