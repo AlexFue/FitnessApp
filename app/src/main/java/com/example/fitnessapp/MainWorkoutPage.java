@@ -20,7 +20,7 @@ public class MainWorkoutPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_workout_page);
 
         textViewResult = findViewById(R.id.text_view_result);
 
