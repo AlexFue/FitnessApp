@@ -9,13 +9,16 @@ import android.widget.Button;
 
 public class HomePage extends AppCompatActivity {
 
-    Button btn_login;
-    Button btn_create;
+    private Button btn_login;
+    private Button btn_create;
+    private FitnessAppDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        db = FitnessAppDB.getInstance(this);
+        db.seed();
 
         btn_login = findViewById(R.id.btn_login);
         btn_create = findViewById(R.id.btn_create);
