@@ -23,4 +23,20 @@ public class EquipmentResponse {
     public List<EquipmentResults> getResults() {
         return results;
     }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setNext(String next) {
+        this.next = next;
+    }
+
+    public void setPrevious(String previous) {
+        this.previous = previous;
+    }
+
+    public void setResults(List<EquipmentResults> results) {
+        this.results = results;
+    }
 }

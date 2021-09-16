@@ -10,6 +10,8 @@ import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Test;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -24,5 +26,20 @@ public class EquipmentEndpointInstrumentedTest {
         Call<EquipmentResponse> call = getRetrofitResponse();
         Boolean result = returnResponse(call, tv);
         assert(result);
+    }
+
+    @Test
+    public void EquipmentResponseTest() {
+        EquipmentResults results = new EquipmentResults();
+        results.setName("dumbbell");
+
+        List<EquipmentResults> resultsList = new ArrayList<>();
+        resultsList.add(results);
+
+        EquipmentResponse response = new EquipmentResponse();
+        response.setResults(resultsList);
+
+        assert(response.getResults().size() > 0);
+        assert(response.getResults().get(0).getName().equals("dumbbell"));
     }
 }
