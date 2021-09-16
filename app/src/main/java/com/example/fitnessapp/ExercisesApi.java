@@ -7,4 +7,7 @@ public interface ExercisesApi {
 
     @GET("exerciseinfo/?language=2")
     Call<ApiResponse> getExercises();
+
+    @GET("equipment")
+    Call<EquipmentResponse> getEquipment();
 }
