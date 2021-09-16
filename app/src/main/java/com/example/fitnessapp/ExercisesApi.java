@@ -10,4 +10,9 @@ public interface ExercisesApi {
 
     @GET("equipment")
     Call<EquipmentResponse> getEquipment();
+
+    @GET("exercisecomment/?language=2")
+    Call<CommentResponse> getComment();
+
+
 }

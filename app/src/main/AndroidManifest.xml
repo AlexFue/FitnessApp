@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.fitnessapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessApp">
+        <activity
+            android:name=".CommentList"
+            android:exported="true" />
         <activity
             android:name=".CreateAccount"
             android:exported="true" />
@@ -21,9 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage"></activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".MainWorkoutPage"></activity>
+        <activity android:name=".LoginPage" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".MainWorkoutPage" />
     </application>
 
 </manifest>
