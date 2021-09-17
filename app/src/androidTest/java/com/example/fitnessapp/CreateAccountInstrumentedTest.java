@@ -46,4 +46,18 @@ public class CreateAccountInstrumentedTest {
         boolean invalidPassword = isValidPassword(u1.getPassword());
         assert(invalidPassword == false);
     }
+
+    @Test
+    public void emptyUsernameTest() {
+        User u1 = new User("", "fsdfsd");
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        db = FitnessAppDB.getInstance(appContext);
+        db.seed();
+
+        boolean invalidUsername =  isValidUsername(u1.getUsername(), db);
+        assert(invalidUsername == false);
+
+        boolean invalidPassword = isValidPassword(u1.getPassword());
+        assert(invalidPassword == true);
+    }
 }
