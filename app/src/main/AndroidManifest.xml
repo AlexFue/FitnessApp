@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessApp">
         <activity
+            android:name=".TestEq"
+            android:exported="true" />
+        <activity
             android:name=".MyExercises"
             android:exported="true" />
         <activity

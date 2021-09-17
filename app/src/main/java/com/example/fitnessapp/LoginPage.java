@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class LoginPage extends AppCompatActivity {
 
     private FitnessAppDB fdb;
@@ -26,7 +29,6 @@ public class LoginPage extends AppCompatActivity {
         et_username = findViewById(R.id.username);
         et_password = findViewById(R.id.password);
         btn_back = findViewById(R.id.back_btn);
-
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,6 +36,7 @@ public class LoginPage extends AppCompatActivity {
             }
         });
     }
+
 
     public void signIn(View view){
         String username = String.valueOf(et_username.getText());

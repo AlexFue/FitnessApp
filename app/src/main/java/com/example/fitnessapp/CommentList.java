@@ -1,9 +1,15 @@
 package com.example.fitnessapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.List;
 
@@ -14,7 +20,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CommentList extends AppCompatActivity {
-
+    private BottomNavigationView bottomNavigationView;
+    private Bundle usernameBun;
+    private String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +31,39 @@ public class CommentList extends AppCompatActivity {
         TextView tv_result;
         tv_result = findViewById(R.id.tv_results);
         tv_result.append("\n\n");
-
+        usernameBun = getIntent().getExtras();
+        username = usernameBun.getString("username");
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item){
+                int itemId = item.getItemId();
+                if (itemId == R.id.action_home) {
+                    Intent newInt1 = new Intent(CommentList.this, MainWorkoutPage.class);
+                    newInt1.putExtra("username", username);
+                    startActivity(newInt1);
+                } else if (itemId == R.id.action_saved) {
+                    Intent newInt2 = new Intent(CommentList.this, MyExercises.class);
+                    newInt2.putExtra("username", username);
+                    startActivity(newInt2);
+                } else if (itemId == R.id.action_logout) {
+                    Intent newInt3 = new Intent(CommentList.this, HomePage.class);
+                    startActivity(newInt3);
+                }
+                else if(itemId == R.id.action_exercises) {
+                    Intent newInt4 = new Intent(CommentList.this, TestEq.class);
+                    newInt4.putExtra("username", username);
+                    startActivity(newInt4);
+                }
+                else if(itemId == R.id.action_comments) {
+                    Intent newInt5 = new Intent(CommentList.this, CommentList.class);
+                    newInt5.putExtra("username", username);
+                    startActivity(newInt5);
+                }
+                finish();
+                return true;
+            }
+        });
         Call<CommentResponse> call = getRetrofitResponse();
         returnResponse(call, tv_result);
     }
@@ -51,7 +91,7 @@ public class CommentList extends AppCompatActivity {
                 List<CommentResults> results = comment.getResults();
                 for(CommentResults er : results) {
                     String content = "";
-                    content += er.getComment() + "\n";
+                    content += er.getComment() + "\n\n";
                     tv_result.append(content);
                 }
             }

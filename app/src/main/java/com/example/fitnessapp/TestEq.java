@@ -19,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class EquipmentList extends AppCompatActivity {
+public class TestEq extends AppCompatActivity {
 
 
     private BottomNavigationView bottomNavigationView;
@@ -44,26 +44,26 @@ public class EquipmentList extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item){
                 int itemId = item.getItemId();
                 if (itemId == R.id.action_home) {
-                    Intent newInt = new Intent(EquipmentList.this, MainWorkoutPage.class);
-                    newInt.putExtra("username", username);
-                    startActivity(newInt);
+                    Intent newInt1 = new Intent(TestEq.this, MainWorkoutPage.class);
+                    newInt1.putExtra("username", username);
+                    startActivity(newInt1);
                 } else if (itemId == R.id.action_saved) {
-                    Intent newInt = new Intent(EquipmentList.this, MyExercises.class);
-                    newInt.putExtra("username", username);
-                    startActivity(newInt);
+                    Intent newInt2 = new Intent(TestEq.this, MyExercises.class);
+                    newInt2.putExtra("username", username);
+                    startActivity(newInt2);
                 } else if (itemId == R.id.action_logout) {
-                    Intent newInt = new Intent(EquipmentList.this, HomePage.class);
-                    startActivity(newInt);
-                }
-                else if(itemId == R.id.action_comments) {
-                    Intent newInt = new Intent(EquipmentList.this, CommentList.class);
-                    newInt.putExtra("username", username);
-                    startActivity(newInt);
+                    Intent newInt3 = new Intent(TestEq.this, HomePage.class);
+                    startActivity(newInt3);
                 }
                 else if(itemId == R.id.action_exercises) {
-                    Intent newInt = new Intent(EquipmentList.this, EquipmentList.class);
-                    newInt.putExtra("username", username);
-                    startActivity(newInt);
+                    Intent newInt4 = new Intent(TestEq.this, TestEq.class);
+                    newInt4.putExtra("username", username);
+                    startActivity(newInt4);
+                }
+                else if(itemId == R.id.action_comments) {
+                    Intent newInt5 = new Intent(TestEq.this, CommentList.class);
+                    newInt5.putExtra("username", username);
+                    startActivity(newInt5);
                 }
                 finish();
                 return true;

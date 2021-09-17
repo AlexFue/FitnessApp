@@ -1,5 +1,6 @@
 package com.example.fitnessapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -9,9 +10,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import org.jsoup.Jsoup;
 
@@ -22,26 +27,56 @@ public class MainWorkoutPage extends AppCompatActivity {
     private TextView textViewResult;
     private Bundle bun;
     private String currUser;
-    private Button viewExercises;
+    private BottomNavigationView bottomNavigationView;
     private FitnessAppDB fdb;
     private ArrayList<Exercise> testArrEx = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_workout_page);
-        viewExercises = (Button) findViewById(R.id.viewExercises);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         textViewResult = findViewById(R.id.text_view_result);
         bun = getIntent().getExtras();
         currUser = bun.getString("username");
         fdb = FitnessAppDB.getInstance(this);
-        viewExercises.setOnClickListener(new View.OnClickListener() {
+//        viewExercises.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent newInt = new Intent(MainWorkoutPage.this, MyExercises.class);
+//                Bundle userBun = new Bundle();
+//                newInt.putExtra("username", currUser);
+//                startActivity(newInt);
+//
+//            }
+//        });
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Intent newInt = new Intent(MainWorkoutPage.this, MyExercises.class);
-                Bundle userBun = new Bundle();
-                newInt.putExtra("username", currUser);
-                startActivity(newInt);
-
+            public boolean onNavigationItemSelected(@NonNull MenuItem item){
+                    int itemId = item.getItemId();
+                    if (itemId == R.id.action_home) {
+                        Intent newInt1 = new Intent(MainWorkoutPage.this, MainWorkoutPage.class);
+                        newInt1.putExtra("username", currUser);
+                        startActivity(newInt1);
+                    } else if (itemId == R.id.action_saved) {
+                        Intent newInt2 = new Intent(MainWorkoutPage.this, MyExercises.class);
+                        newInt2.putExtra("username", currUser);
+                        startActivity(newInt2);
+                    } else if (itemId == R.id.action_logout) {
+                        Intent newInt3 = new Intent(MainWorkoutPage.this, HomePage.class);
+                        startActivity(newInt3);
+                    }
+                    else if(itemId == R.id.action_exercises) {
+                        Intent newInt4 = new Intent(MainWorkoutPage.this, TestEq.class);
+                        newInt4.putExtra("username", currUser);
+                        startActivity(newInt4);
+                    }
+                    else if(itemId == R.id.action_comments) {
+                        Intent newInt5 = new Intent(MainWorkoutPage.this, CommentList.class);
+                        newInt5.putExtra("username", currUser);
+                        startActivity(newInt5);
+                    }
+                    finish();
+                return true;
             }
         });
         Retrofit retrofit = new Retrofit.Builder()
