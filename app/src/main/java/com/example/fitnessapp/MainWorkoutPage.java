@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainWorkoutPage extends AppCompatActivity {
@@ -22,6 +23,8 @@ public class MainWorkoutPage extends AppCompatActivity {
     private Bundle bun;
     private String currUser;
     private Button viewExercises;
+    private FitnessAppDB fdb;
+    private ArrayList<Exercise> testArrEx = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +33,12 @@ public class MainWorkoutPage extends AppCompatActivity {
         textViewResult = findViewById(R.id.text_view_result);
         bun = getIntent().getExtras();
         currUser = bun.getString("username");
+        fdb = FitnessAppDB.getInstance(this);
         viewExercises.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent newInt = new Intent(MainWorkoutPage.this, MyExercises.class);
                 Bundle userBun = new Bundle();
-//                userBun.putString("username", currUser);
                 newInt.putExtra("username", currUser);
                 startActivity(newInt);
 
@@ -68,7 +71,8 @@ public class MainWorkoutPage extends AppCompatActivity {
                 content += "\nExercise count: " + post.getCount() + "\n\n";
 
                 List<Results> results = post.getResults();
-
+                Exercise testWork = new Exercise(results.get(0).getName(), results.get(0).getDescription(), results.get(0).getEquipment().get(0).toString(), results.get(0).getCategory().toString());
+                testArrEx.add(testWork);
                 for (Results result : results) {
                     content += "Exercise Name: " + result.getName() + "\n";
                     content += "Description: " + html2text(result.getDescription()) + "\n";
@@ -86,7 +90,8 @@ public class MainWorkoutPage extends AppCompatActivity {
                     content += equipmentStr + "\n\n";
 
                 }
-
+                User addExTest = fdb.user().findUserByUsername(currUser);
+                addExTest.setExercises(testArrEx);
                 textViewResult.append(content);
             }
 
