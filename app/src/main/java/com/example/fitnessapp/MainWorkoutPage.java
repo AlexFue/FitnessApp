@@ -7,7 +7,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.jsoup.Jsoup;
@@ -16,14 +19,28 @@ import java.util.List;
 
 public class MainWorkoutPage extends AppCompatActivity {
     private TextView textViewResult;
-
+    private Bundle bun;
+    private String currUser;
+    private Button viewExercises;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_workout_page);
-
+        viewExercises = (Button) findViewById(R.id.viewExercises);
         textViewResult = findViewById(R.id.text_view_result);
+        bun = getIntent().getExtras();
+        currUser = bun.getString("username");
+        viewExercises.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newInt = new Intent(MainWorkoutPage.this, MyExercises.class);
+                Bundle userBun = new Bundle();
+//                userBun.putString("username", currUser);
+                newInt.putExtra("username", currUser);
+                startActivity(newInt);
 
+            }
+        });
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://wger.de/api/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
