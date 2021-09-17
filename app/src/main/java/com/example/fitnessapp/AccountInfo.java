@@ -10,12 +10,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class AccountInfo extends AppCompatActivity {
 
+    private Bundle bund;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_account);
 
-        Bundle bund = this.getIntent().getExtras();
+        bund = this.getIntent().getExtras();
 
         String username = bund.getString("username");
         String password = bund.getString("password");
@@ -40,6 +42,7 @@ public class AccountInfo extends AppCompatActivity {
 
     public void edit(View view){
         Intent i  = new Intent(this, EditAccount.class);
+        i.putExtras(bund);
         startActivity(i);
     }
 

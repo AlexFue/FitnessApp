@@ -38,12 +38,12 @@ public interface UserDao {
     @Query("UPDATE users SET mExercises = :exercises WHERE username = :username")
     void updateExercises(ArrayList<Exercise> exercises, String username);
 
-    @Query("UPDATE users SET username = :username, password = :password WHERE username = :username")
-    void updateUsernameAndPassword(String username, String password);
+    @Query("UPDATE users SET username = :username, password = :password WHERE username = :old_username")
+    void updateUsernameAndPassword(String username, String password, String old_username);
 
-    @Query("UPDATE users SET username = :username WHERE username = :username")
-    void updateUsername(String username);
+    @Query("UPDATE users SET username = :username WHERE username = :old_username")
+    void updateUsername(String username, String old_username);
 
-    @Query("UPDATE users SET password = :password WHERE username = :username")
-    void updatePassword(String username, String password);
+    @Query("UPDATE users SET password = :password WHERE username = :old_username")
+    void updatePassword(String password, String old_username);
 }

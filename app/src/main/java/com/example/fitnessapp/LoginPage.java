@@ -54,7 +54,7 @@ public class LoginPage extends AppCompatActivity {
                 return;
         }
 
-        Intent intent = new Intent(LoginPage.this, MainWorkoutPage.class);
+        Intent intent = new Intent(LoginPage.this, AccountInfo.class);
         intent.putExtras(bun);
         startActivity(intent);
         finish();
