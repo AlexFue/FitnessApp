@@ -5,12 +5,13 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+@Database(entities = {User.class}, version = 6, exportSchema = false)
+@TypeConverters({Converters.class})
 public abstract class FitnessAppDB extends RoomDatabase {
     private static FitnessAppDB sInstance;
     public abstract UserDao user();
-//    public abstract ExerciseDao exercise();
 
     public static synchronized FitnessAppDB getInstance(Context context){
         if(sInstance == null){

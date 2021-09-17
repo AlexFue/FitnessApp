@@ -4,8 +4,12 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.ArrayList;
+
 @Entity(tableName = "users")
 public class User {
+    private ArrayList<Exercise> mExercises;
+
     @PrimaryKey(autoGenerate = true)
     private int mUserId;
 
@@ -18,6 +22,7 @@ public class User {
     public User(String mUsername, String mPassword){
         this.mUsername = mUsername;
         this.mPassword = mPassword;
+        this.mExercises = new ArrayList<Exercise>();
     }
 
     public int getUserId() {
@@ -36,6 +41,10 @@ public class User {
         this.mUserId = mUserId;
     }
 
+    public void setExercises(ArrayList<Exercise> mExercises) {
+        this.mExercises = mExercises;
+    }
+
     public void setUsername(String mUsername) {
         this.mUsername = mUsername;
     }
@@ -46,5 +55,13 @@ public class User {
 
     public String toSting(){
         return "username: " + mUsername + " password: " + mPassword;
+    }
+
+    public ArrayList<Exercise> getExercises() {
+        return mExercises;
+    }
+
+    public void addExercise(Exercise ex) {
+        mExercises.add(ex);
     }
 }

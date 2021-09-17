@@ -32,8 +32,10 @@ public class CreateAccount extends AppCompatActivity {
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isValidUsername(et_username.getText().toString(), db) && isValidPassword(et_password.getText().toString())) {
-                    User newUser = new User(et_username.getText().toString(), et_password.getText().toString());
+                String username = et_username.getText().toString();
+                String password = et_password.getText().toString();
+                if(isValidUsername(username, db) && isValidPassword(password)) {
+                    User newUser = new User(username, password);
                     db.user().addUser(newUser);
                     Toast.makeText(CreateAccount.this, "Successfully Created Account!", Toast.LENGTH_SHORT).show();
 
@@ -41,7 +43,11 @@ public class CreateAccount extends AppCompatActivity {
                         @Override
                         public void run() {
                             CreateAccount.this.finish();
-                            Intent i = new Intent(CreateAccount.this, MainActivity.class);
+                            Intent i = new Intent(CreateAccount.this, MainWorkoutPage.class);
+                            Bundle bun = new Bundle();
+                            bun.putString("username", username);
+                            bun.putString("password", password);
+                            i.putExtras(bun);
                             startActivity(i);
                         }
                     }, 2000);
