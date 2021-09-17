@@ -56,11 +56,4 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:id="@+id/btn_back" />
-    <include
-        layout="@layout/item_bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true"
-/>
 </LinearLayout>
