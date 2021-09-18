@@ -20,7 +20,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class LoginPage extends AppCompatActivity {
 
     private FitnessAppDB fdb;
-    private Button btn_back;
     private EditText et_username;
     private EditText et_password;
     private Bundle bun = new Bundle();
@@ -33,13 +32,6 @@ public class LoginPage extends AppCompatActivity {
         fdb = FitnessAppDB.getInstance(this);
         et_username = findViewById(R.id.username);
         et_password = findViewById(R.id.password);
-        btn_back = findViewById(R.id.back_btn);
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     /**
@@ -129,5 +121,11 @@ public class LoginPage extends AppCompatActivity {
         et_username.setSelectAllOnFocus(true);
         et_username.requestFocus();
         Toast.makeText(LoginPage.this, "Incorrect Username!", Toast.LENGTH_SHORT).show();
+    }
+
+    public void exit(View view){
+        Intent x = new Intent(this, HomePage.class);
+        startActivity(x);
+        finish();
     }
 }

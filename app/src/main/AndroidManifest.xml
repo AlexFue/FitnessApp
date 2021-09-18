@@ -31,9 +31,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginPage" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".MainWorkoutPage" />
+        <activity android:name=".LoginPage"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainWorkoutPage"></activity>
+        <activity android:name=".AccountInfo"></activity>
+        <activity android:name=".EditAccount"></activity>
     </application>
 
 </manifest>
