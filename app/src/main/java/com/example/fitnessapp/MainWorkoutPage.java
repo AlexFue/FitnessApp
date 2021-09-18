@@ -8,11 +8,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,6 +24,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import org.jsoup.Jsoup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MainWorkoutPage extends AppCompatActivity {
@@ -39,16 +43,7 @@ public class MainWorkoutPage extends AppCompatActivity {
         bun = getIntent().getExtras();
         currUser = bun.getString("username");
         fdb = FitnessAppDB.getInstance(this);
-//        viewExercises.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent newInt = new Intent(MainWorkoutPage.this, MyExercises.class);
-//                Bundle userBun = new Bundle();
-//                newInt.putExtra("username", currUser);
-//                startActivity(newInt);
-//
-//            }
-//        });
+
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item){
@@ -108,10 +103,15 @@ public class MainWorkoutPage extends AppCompatActivity {
                 List<Results> results = post.getResults();
                 Exercise testWork = new Exercise(results.get(0).getName(), results.get(0).getDescription(), results.get(0).getEquipment().get(0).toString(), results.get(0).getCategory().toString());
                 testArrEx.add(testWork);
+
+                ArrayList<Exercise> allExercises = new ArrayList<>();
                 for (Results result : results) {
-                    content += "Exercise Name: " + result.getName() + "\n";
-                    content += "Description: " + html2text(result.getDescription()) + "\n";
-                    content += "Category: " + result.getCategory().getName() + "\n";
+                    String title = result.getName();
+                    String description = html2text(result.getDescription());
+                    String category = result.getCategory().getName();
+                    content += "Exercise Name: " + title + "\n";
+                    content += "Description: " + description + "\n";
+                    content += "Category: " + category + "\n";
                     content += "Equipment Needed: ";
                     String equipmentStr = "";
                     List<Equipment> equipments = result.getEquipment();
@@ -123,11 +123,14 @@ public class MainWorkoutPage extends AppCompatActivity {
                     }
 
                     content += equipmentStr + "\n\n";
+                    Exercise newExercise = new Exercise(title,description, equipmentStr,category);
+                    allExercises.add(newExercise);
 
                 }
-                User addExTest = fdb.user().findUserByUsername(currUser);
-                addExTest.setExercises(testArrEx);
-                textViewResult.append(content);
+
+                ListView listview = findViewById(R.id.listview);
+                listview.setAdapter(new MyCustomAdapter(allExercises, App.context, fdb, currUser) );
+
             }
 
             @Override
