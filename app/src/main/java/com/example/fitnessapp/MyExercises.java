@@ -17,13 +17,10 @@ public class MyExercises extends AppCompatActivity {
     private Bundle userNameBun;
     private String username;
     private FitnessAppDB fdb;
-    private Exercise testEx;
-    private Exercise testEx2;
-    private Exercise testEx3;
     private TextView textViewMyWorkouts;
     private ArrayList<Exercise> workoutsSaved = new ArrayList<>();
-    private ArrayList<Exercise> testArr = new ArrayList<>();
     private BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,14 +31,7 @@ public class MyExercises extends AppCompatActivity {
         username = userNameBun.getString("username");
         User user = fdb.user().findUserByUsername(username);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
-        //Dummy Data For Now until Save for later functionality is added.
-        testEx = new Exercise("Test", "test", "Test", "Test");
-        testEx2 = new Exercise("Test2", "test2", "Test2", "Test2");
-        testEx3 = new Exercise("Test3", "test3", "Test3", "Test3");
 
-        testArr.add(testEx);
-        testArr.add(testEx2);
-        testArr.add(testEx3);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item){
@@ -72,7 +62,6 @@ public class MyExercises extends AppCompatActivity {
                 return true;
             }
         });
-        user.setExercises(testArr);
         workoutsSaved = user.getExercises();
         String contentForScrollView = "";
         for(Exercise exercise : workoutsSaved){
