@@ -1,3 +1,11 @@
+/**
+ * This MyExercises activity looks for the user that is logged in and displays all the workouts the
+ * user saved to his "save for later". The name, description, equipment, and category are all displayed
+ * on activity_my_exercises layout file.
+ * @author  Ivan MEndoza
+ * @version 1.0
+ * @since   2021-09-17
+ */
 package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;

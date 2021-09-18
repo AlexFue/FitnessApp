@@ -1,3 +1,10 @@
+/**
+ * This TestEq activity grabs all the equipment used in all workouts from the API https://wger.de/api/v2/
+ * and displays it onto the activity_test_eq layout.
+ * @author  Ivan MEndoza
+ * @version 1.0
+ * @since   2021-09-17
+ */
 package com.example.fitnessapp;
 
 import androidx.annotation.NonNull;
