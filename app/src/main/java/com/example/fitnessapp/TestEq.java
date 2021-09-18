@@ -88,7 +88,7 @@ public class TestEq extends AppCompatActivity {
         account_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent newInt = new Intent(TestEq.this, EditAccount.class);
+                Intent newInt = new Intent(TestEq.this, AccountInfo.class);
                 newInt.putExtra("username", username);
                 newInt.putExtra("password", passsword);
                 startActivity(newInt);
