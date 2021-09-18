@@ -18,6 +18,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Abstract: tests to equipment endpoint to display comments
+ * Contributors: Alex
+ */
+
 public class EquipmentEndpointInstrumentedTest {
     @Test
     public void getResponseTest() {
