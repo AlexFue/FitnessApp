@@ -7,27 +7,27 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="389dp"
+        android:layout_height="690dp"
         android:orientation="vertical"
         android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".HomePage">
+        tools:context=".HomePage"
+        tools:layout_editor_absoluteX="10dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <ListView
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/listview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="545dp" />
+
+        <include
+            layout="@layout/item_bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/listview"
+            android:layout_gravity="bottom"
+            tools:layout_editor_absoluteX="-16dp"
+            tools:layout_editor_absoluteY="659dp" />
     </LinearLayout>
-    <include
-        layout="@layout/item_bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_below="@id/linearLayout"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
