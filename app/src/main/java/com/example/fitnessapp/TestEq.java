@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,10 +30,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TestEq extends AppCompatActivity {
 
-
+    private FitnessAppDB fdb;
     private BottomNavigationView bottomNavigationView;
     private Bundle usernameBun;
     private String username;
+    private Button account_info;
+    private String passsword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +44,14 @@ public class TestEq extends AppCompatActivity {
         TextView tv_result;
         tv_result = findViewById(R.id.tv_results);
         tv_result.append("\n\n");
+        fdb = FitnessAppDB.getInstance(this);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         usernameBun = getIntent().getExtras();
         username = usernameBun.getString("username");
+        User user = fdb.user().findUserByUsername(username);
+        passsword = user.getPassword();
+        account_info = (Button) findViewById(R.id.button2);
+
         Call<EquipmentResponse> call = getRetrofitResponse();
         returnResponse(call, tv_result);
 
@@ -74,6 +83,15 @@ public class TestEq extends AppCompatActivity {
                 }
                 finish();
                 return true;
+            }
+        });
+        account_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newInt = new Intent(TestEq.this, EditAccount.class);
+                newInt.putExtra("username", username);
+                newInt.putExtra("password", passsword);
+                startActivity(newInt);
             }
         });
     }

@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,6 +30,8 @@ public class MyExercises extends AppCompatActivity {
     private TextView textViewMyWorkouts;
     private ArrayList<Exercise> workoutsSaved = new ArrayList<>();
     private BottomNavigationView bottomNavigationView;
+//    private Button account_info;
+    private String passsword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +40,15 @@ public class MyExercises extends AppCompatActivity {
         textViewMyWorkouts = (TextView) findViewById(R.id.text_view_my_workouts);
         fdb = FitnessAppDB.getInstance(this);
         userNameBun = getIntent().getExtras();
+//        account_info = (Button) findViewById(R.id.account_info);
         username = userNameBun.getString("username");
         User user = fdb.user().findUserByUsername(username);
+        passsword = user.getPassword();
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item){
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.action_home) {
                     Intent newInt1 = new Intent(MyExercises.this, MainWorkoutPage.class);
@@ -55,13 +61,11 @@ public class MyExercises extends AppCompatActivity {
                 } else if (itemId == R.id.action_logout) {
                     Intent newInt3 = new Intent(MyExercises.this, HomePage.class);
                     startActivity(newInt3);
-                }
-                else if(itemId == R.id.action_exercises) {
+                } else if (itemId == R.id.action_exercises) {
                     Intent newInt4 = new Intent(MyExercises.this, TestEq.class);
                     newInt4.putExtra("username", username);
                     startActivity(newInt4);
-                }
-                else if(itemId == R.id.action_comments) {
+                } else if (itemId == R.id.action_comments) {
                     Intent newInt5 = new Intent(MyExercises.this, CommentList.class);
                     newInt5.putExtra("username", username);
                     startActivity(newInt5);
@@ -72,12 +76,12 @@ public class MyExercises extends AppCompatActivity {
         });
         workoutsSaved = user.getExercises();
         String contentForScrollView = "";
-        for(Exercise exercise : workoutsSaved){
-            contentForScrollView += "\n\nExercise Name: " + exercise.getTitle()+ "\n";
-            contentForScrollView += "Description: " + exercise.getDescription()+ "\n";
-            contentForScrollView += "Category: " + exercise.getCategory()+ "\n";
+        for (Exercise exercise : workoutsSaved) {
+            contentForScrollView += "\n\nExercise Name: " + exercise.getTitle() + "\n";
+            contentForScrollView += "Description: " + exercise.getDescription() + "\n";
+            contentForScrollView += "Category: " + exercise.getCategory() + "\n";
             contentForScrollView += "Equipment Needed: " + exercise.getEquipment();
-            contentForScrollView+="\n\n";
+            contentForScrollView += "\n\n";
         }
         textViewMyWorkouts.append(contentForScrollView);
     }
