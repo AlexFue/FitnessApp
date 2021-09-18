@@ -2,6 +2,11 @@ package com.example.fitnessapp;
 
 import java.util.List;
 
+/**
+ * Abstract: Java class to represent the comment endpoint object
+ * Contributors: Alex
+ */
+
 public class CommentResponse {
     private int count;
     private String next;

@@ -19,6 +19,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Abstract: Activity that displays all workout comments from comment endpoint for user to see.
+ * Contributors: Alex/Ivan
+ */
+
 public class CommentList extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Bundle usernameBun;
@@ -68,6 +73,10 @@ public class CommentList extends AppCompatActivity {
         returnResponse(call, tv_result);
     }
 
+    /**
+     * Function Description: gets the api response from endpoint
+     * @return Call<CommentResponse>
+     */
     public static Call<CommentResponse> getRetrofitResponse() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://wger.de/api/v2/")
@@ -79,6 +88,12 @@ public class CommentList extends AppCompatActivity {
         return call;
     }
 
+    /**
+     * Function Description: extracts workout comments from api response and added them to page
+     * @param call
+     * @param tv_result
+     * @return boolean
+     */
     public static boolean returnResponse(Call<CommentResponse> call, TextView tv_result) {
         call.enqueue(new Callback<CommentResponse>() {
             @Override
