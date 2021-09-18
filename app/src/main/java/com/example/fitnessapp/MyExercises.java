@@ -59,7 +59,9 @@ public class MyExercises extends AppCompatActivity {
                     newInt2.putExtra("username", username);
                     startActivity(newInt2);
                 } else if (itemId == R.id.action_logout) {
-                    Intent newInt3 = new Intent(MyExercises.this, HomePage.class);
+                    Intent newInt3 = new Intent(MyExercises.this, AccountInfo.class);
+                    newInt3.putExtra("username", username);
+                    newInt3.putExtra("password", passsword);
                     startActivity(newInt3);
                 } else if (itemId == R.id.action_exercises) {
                     Intent newInt4 = new Intent(MyExercises.this, TestEq.class);

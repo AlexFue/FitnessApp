@@ -30,6 +30,8 @@ public class EquipmentList extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Bundle usernameBun;
     private String username;
+    private FitnessAppDB fdb;
+    private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +40,12 @@ public class EquipmentList extends AppCompatActivity {
         TextView tv_result;
         tv_result = findViewById(R.id.tv_results);
         tv_result.append("\n\n");
+        fdb = FitnessAppDB.getInstance(this);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         usernameBun = getIntent().getExtras();
         username = usernameBun.getString("username");
+        User user = fdb.user().findUserByUsername(username);
+        password = user.getPassword();
         Call<EquipmentResponse> call = getRetrofitResponse();
         returnResponse(call, tv_result);
 
@@ -57,7 +62,9 @@ public class EquipmentList extends AppCompatActivity {
                     newInt.putExtra("username", username);
                     startActivity(newInt);
                 } else if (itemId == R.id.action_logout) {
-                    Intent newInt = new Intent(EquipmentList.this, HomePage.class);
+                    Intent newInt = new Intent(EquipmentList.this, AccountInfo.class);
+                    newInt.putExtra("username", username);
+                    newInt.putExtra("password", password);
                     startActivity(newInt);
                 }
                 else if(itemId == R.id.action_comments) {
