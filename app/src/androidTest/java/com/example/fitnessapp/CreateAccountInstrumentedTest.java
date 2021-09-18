@@ -12,6 +12,11 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Abstract: Tests to see if user account is valid, if user account is invalid, and is username is empty
+ * Contributors: Alex
+ */
+
 @RunWith(AndroidJUnit4.class)
 public class CreateAccountInstrumentedTest {
 
