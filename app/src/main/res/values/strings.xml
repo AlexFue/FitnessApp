@@ -5,4 +5,13 @@
     <string name="password">Password: </string>
     <string name="login">Login</string>
     <string name="login_btn">Login</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="explore_your_saved_exercises">Explore Your Saved Exercises</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_saved_workouts">Saved Workouts</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_comments">Comments</string>
+    <string name="menu_exercises">Exercises</string>
+
+
 </resources>

@@ -12,6 +12,11 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * Abstract: Tests to see if user account is valid, if user account is invalid, and is username is empty
+ * Contributors: Alex
+ */
+
 @RunWith(AndroidJUnit4.class)
 public class CreateAccountInstrumentedTest {
 
@@ -45,5 +50,19 @@ public class CreateAccountInstrumentedTest {
 
         boolean invalidPassword = isValidPassword(u1.getPassword());
         assert(invalidPassword == false);
+    }
+
+    @Test
+    public void emptyUsernameTest() {
+        User u1 = new User("", "fsdfsd");
+        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+        db = FitnessAppDB.getInstance(appContext);
+        db.seed();
+
+        boolean invalidUsername =  isValidUsername(u1.getUsername(), db);
+        assert(invalidUsername == false);
+
+        boolean invalidPassword = isValidPassword(u1.getPassword());
+        assert(invalidPassword == true);
     }
 }

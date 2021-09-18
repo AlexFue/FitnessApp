@@ -1,5 +1,10 @@
 package com.example.fitnessapp;
 
+/**
+ * Abstract: tests to comment endpoint to display comments
+ * Contributors: Alex
+ */
+
 import static com.example.fitnessapp.CommentList.getRetrofitResponse;
 import static com.example.fitnessapp.EquipmentList.returnResponse;
 

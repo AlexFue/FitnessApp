@@ -7,6 +7,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+/**
+ * Abstract: java class to create database to store users and their information
+ * Contributors: Alex
+ */
+
 @Database(entities = {User.class}, version = 6, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class FitnessAppDB extends RoomDatabase {
@@ -25,6 +30,9 @@ public abstract class FitnessAppDB extends RoomDatabase {
         return sInstance;
     }
 
+    /**
+     * Function Description: adds default users to start off in database
+     */
     public void seed() { // prepopulating database with some users and books
         if (user().count() == 0) {
             User alex = new User("alex", "123");

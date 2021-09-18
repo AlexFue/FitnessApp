@@ -1,3 +1,10 @@
+/**
+ * This class created an Exercise which has a name, description, equipment, and category.
+ * Setters and getters implemented.
+ * @author  Ivan MEndoza
+ * @version 1.0
+ * @since   2021-09-17
+ */
 package com.example.fitnessapp;
 
 import androidx.room.ColumnInfo;

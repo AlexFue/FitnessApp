@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context=".HomePage">
+        tools:context=".MyExercises">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:paddingTop="20dp"
                 android:gravity="center"
                 android:paddingBottom="20dp"
-                android:text="View All Comments"
+                android:text="View All Equipment"
                 android:textSize="20dp" />
         </androidx.core.widget.NestedScrollView>
 

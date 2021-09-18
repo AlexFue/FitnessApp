@@ -1,0 +1,27 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/action_home"
+    android:enabled="true"
+    android:icon="@drawable/ic_home"
+    android:title="@string/menu_home"/>
+<item
+    android:id="@+id/action_saved"
+    android:enabled="true"
+    android:icon="@drawable/ic_contact"
+    android:title="@string/menu_saved_workouts"/>
+<item
+    android:id="@+id/action_logout"
+    android:enabled="true"
+    android:icon="@drawable/ic_logout"
+    android:title="@string/menu_logout"/>
+    <item
+        android:id="@+id/action_comments"
+        android:enabled="true"
+        android:icon="@drawable/ic_comments"
+        android:title="@string/menu_comments"/>
+    <item
+        android:id="@+id/action_exercises"
+        android:enabled="true"
+        android:icon="@drawable/ic_exercises"
+        android:title="@string/menu_exercises"/>
+</menu>

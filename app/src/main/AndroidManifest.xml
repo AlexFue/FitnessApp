@@ -10,7 +10,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FitnessApp">
+        android:theme="@style/Theme.FitnessApp"
+        android:name="com.example.fitnessapp.App">
+        <activity
+            android:name=".TestEq"
+            android:exported="true" />
+        <activity
+            android:name=".MyExercises"
+            android:exported="true" />
         <activity
             android:name=".CommentList"
             android:exported="true" />

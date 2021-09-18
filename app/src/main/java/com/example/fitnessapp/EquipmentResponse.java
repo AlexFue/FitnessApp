@@ -2,6 +2,11 @@ package com.example.fitnessapp;
 
 import java.util.List;
 
+/**
+ * Abstract: Java class to represent the equipment endpoint object
+ * Contributor: Alex
+ */
+
 public class EquipmentResponse {
     private int count;
     private String next;
