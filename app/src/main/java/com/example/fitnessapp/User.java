@@ -6,6 +6,11 @@ import androidx.room.PrimaryKey;
 
 import java.util.ArrayList;
 
+/**
+ * Abstract: Java class creates user object as table for database
+ * Contributor: Alex
+ */
+
 @Entity(tableName = "users")
 public class User {
     private ArrayList<Exercise> mExercises;

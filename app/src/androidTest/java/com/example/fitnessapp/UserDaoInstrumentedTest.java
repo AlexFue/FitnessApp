@@ -12,6 +12,11 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+/**
+ * Abstract: Tests that add user to database and remove it, and test user methods
+ * Contributor: Alex
+ */
+
 @RunWith(AndroidJUnit4.class)
 public class UserDaoInstrumentedTest {
 
