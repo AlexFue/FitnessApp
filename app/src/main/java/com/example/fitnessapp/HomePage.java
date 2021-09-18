@@ -7,6 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Abstract: Activity that displays login/create account button for user to choose
+ * Contributor: Alex
+ */
+
 public class HomePage extends AppCompatActivity {
 
     private Button btn_login;
