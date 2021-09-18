@@ -41,6 +41,7 @@ public class EditAccount extends AppCompatActivity {
     public void updateAccount(View v) {
 
         String old_user = bund.getString("username");
+        String old_pass = bund.getString("password");
 
         String new_user = String.valueOf(user_change.getText());
         String new_pass = String.valueOf(pass_change.getText());
@@ -49,8 +50,6 @@ public class EditAccount extends AppCompatActivity {
         boolean user_empty = new_user.equals("");
 
         User user_checker = fdb.user().findUserByUsername(new_user);
-
-        String user_exists = user_checker.getUsername();
 
         if(user_empty && pass_empty){
             Toast.makeText(this, "Enter the data you would like to change.", Toast.LENGTH_SHORT).show();
@@ -61,50 +60,47 @@ public class EditAccount extends AppCompatActivity {
 
                     Bundle new_bund = new Bundle();
 
-                    User updated_user = fdb.user().findUserByUsername(new_user);
-
-                    new_bund.putString("username", updated_user.getUsername());
-                    new_bund.putString("password", updated_user.getPassword());
+                    new_bund.putString("username", old_user);
+                    new_bund.putString("password", new_pass);
 
                     Intent i = new Intent(this, AccountInfo.class);
                     i.putExtras(new_bund);
                     startActivity(i);
+                    finish();
                 }
                 else{
                     Toast.makeText(this, "Enter the data you would like to change.", Toast.LENGTH_SHORT).show();
                 }
             } else if(pass_empty && !user_empty){
-                if(user_exists.equals("")) {
+                if(user_checker == null) {
                     fdb.user().updateUsername(new_user, old_user);
 
                     Bundle new_bund = new Bundle();
 
-                    User updated_user = fdb.user().findUserByUsername(new_user);
-
-                    new_bund.putString("username", updated_user.getUsername());
-                    new_bund.putString("password", updated_user.getPassword());
+                    new_bund.putString("username", new_user);
+                    new_bund.putString("password", old_pass);
 
                     Intent i = new Intent(this, AccountInfo.class);
                     i.putExtras(new_bund);
                     startActivity(i);
+                    finish();
                 } else {
                     Toast.makeText(this, "Username Already Taken", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 if (new_pass.equals(check_new_pass) && !pass_empty) {
-                    if (user_exists.equals("")) {
+                    if (user_checker == null) {
                         fdb.user().updateUsernameAndPassword(new_user, new_pass, old_user);
 
                         Bundle new_bund = new Bundle();
 
-                        User updated_user = fdb.user().findUserByUsername(new_user);
-
-                        new_bund.putString("username", updated_user.getUsername());
-                        new_bund.putString("password", updated_user.getPassword());
+                        new_bund.putString("username", new_user);
+                        new_bund.putString("password", new_pass);
 
                         Intent i = new Intent(this, AccountInfo.class);
                         i.putExtras(new_bund);
                         startActivity(i);
+                        finish();
                     } else {
                         Toast.makeText(this, "Username Already Taken", Toast.LENGTH_SHORT).show();
                     }

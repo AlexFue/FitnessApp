@@ -3,7 +3,6 @@ package com.example.fitnessapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,15 +28,6 @@ public class AccountInfo extends AppCompatActivity {
         welcome.setText("Welcome " + username + "!");
         user_chng.setText(username);
         pass_chng.setText(password);
-
-        Button back = findViewById(R.id.return_button);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     public void edit(View view){
@@ -46,5 +36,10 @@ public class AccountInfo extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void logout(View view){
+        Intent x = new Intent(this, LoginPage.class);
+        startActivity(x);
+        finish();
+    }
 
 }
