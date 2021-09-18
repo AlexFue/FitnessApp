@@ -7,6 +7,11 @@ import androidx.room.Query;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Abstract: Java interface for queries of user object in database
+ * Contributor: Alex
+ */
+
 @Dao
 public interface UserDao {
 
