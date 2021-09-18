@@ -19,6 +19,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ * Abstract: Activity that displays list of equipment from equipment api endpoint
+ * Contributors: Alex, Ivan
+ */
+
 public class EquipmentList extends AppCompatActivity {
 
 
@@ -71,6 +76,10 @@ public class EquipmentList extends AppCompatActivity {
         });
     }
 
+    /**
+     * Function Description: gets the api response from endpoint
+     * @return Call<EquipmentResponse>
+     */
     public static Call<EquipmentResponse> getRetrofitResponse() {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://wger.de/api/v2/")
@@ -82,6 +91,12 @@ public class EquipmentList extends AppCompatActivity {
         return call;
     }
 
+    /**
+     * Function Description: extracts workout comments from api response and added them to page
+     * @param call
+     * @param tv_result
+     * @return boolean
+     */
     public static boolean returnResponse(Call<EquipmentResponse> call, TextView tv_result) {
         call.enqueue(new Callback<EquipmentResponse>() {
             @Override

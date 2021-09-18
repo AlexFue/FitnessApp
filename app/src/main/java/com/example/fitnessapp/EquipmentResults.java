@@ -1,5 +1,10 @@
 package com.example.fitnessapp;
 
+/**
+ * Abstract: Java class to represent the results object in equipment endpoint
+ * Contributors: Alex
+ */
+
 public class EquipmentResults {
     private int id;
     private String name;
