@@ -28,16 +28,22 @@ public class CommentList extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Bundle usernameBun;
     private String username;
+    private String password;
+    private FitnessAppDB fdb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_list);
+
+        fdb = FitnessAppDB.getInstance(this);
 
         TextView tv_result;
         tv_result = findViewById(R.id.tv_results);
         tv_result.append("\n\n");
         usernameBun = getIntent().getExtras();
         username = usernameBun.getString("username");
+        User user = fdb.user().findUserByUsername(username);
+        password = user.getPassword();
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -52,7 +58,9 @@ public class CommentList extends AppCompatActivity {
                     newInt2.putExtra("username", username);
                     startActivity(newInt2);
                 } else if (itemId == R.id.action_logout) {
-                    Intent newInt3 = new Intent(CommentList.this, HomePage.class);
+                    Intent newInt3 = new Intent(CommentList.this, AccountInfo.class);
+                    newInt3.putExtra("username", username);
+                    newInt3.putExtra("password", password);
                     startActivity(newInt3);
                 }
                 else if(itemId == R.id.action_exercises) {

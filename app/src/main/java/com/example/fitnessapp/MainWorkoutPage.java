@@ -34,16 +34,18 @@ public class MainWorkoutPage extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private FitnessAppDB fdb;
     private ArrayList<Exercise> testArrEx = new ArrayList<>();
+    private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_workout_page);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.navigation);
         textViewResult = findViewById(R.id.text_view_result);
+        fdb = FitnessAppDB.getInstance(this);
         bun = getIntent().getExtras();
         currUser = bun.getString("username");
-        fdb = FitnessAppDB.getInstance(this);
-
+        User user = fdb.user().findUserByUsername(currUser);
+        password = user.getPassword();
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item){
@@ -57,7 +59,9 @@ public class MainWorkoutPage extends AppCompatActivity {
                         newInt2.putExtra("username", currUser);
                         startActivity(newInt2);
                     } else if (itemId == R.id.action_logout) {
-                        Intent newInt3 = new Intent(MainWorkoutPage.this, HomePage.class);
+                        Intent newInt3 = new Intent(MainWorkoutPage.this, AccountInfo.class);
+                        newInt3.putExtra("username", currUser);
+                        newInt3.putExtra("password", password);
                         startActivity(newInt3);
                     }
                     else if(itemId == R.id.action_exercises) {

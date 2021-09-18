@@ -34,7 +34,6 @@ public class TestEq extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private Bundle usernameBun;
     private String username;
-    private Button account_info;
     private String passsword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +49,6 @@ public class TestEq extends AppCompatActivity {
         username = usernameBun.getString("username");
         User user = fdb.user().findUserByUsername(username);
         passsword = user.getPassword();
-        account_info = (Button) findViewById(R.id.button2);
-
         Call<EquipmentResponse> call = getRetrofitResponse();
         returnResponse(call, tv_result);
 
@@ -68,7 +65,9 @@ public class TestEq extends AppCompatActivity {
                     newInt2.putExtra("username", username);
                     startActivity(newInt2);
                 } else if (itemId == R.id.action_logout) {
-                    Intent newInt3 = new Intent(TestEq.this, HomePage.class);
+                    Intent newInt3 = new Intent(TestEq.this, AccountInfo.class);
+                    newInt3.putExtra("username", username);
+                    newInt3.putExtra("password", passsword);
                     startActivity(newInt3);
                 }
                 else if(itemId == R.id.action_exercises) {
@@ -83,15 +82,6 @@ public class TestEq extends AppCompatActivity {
                 }
                 finish();
                 return true;
-            }
-        });
-        account_info.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent newInt = new Intent(TestEq.this, AccountInfo.class);
-                newInt.putExtra("username", username);
-                newInt.putExtra("password", passsword);
-                startActivity(newInt);
             }
         });
     }
