@@ -11,6 +11,11 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.*;
 import java.util.List;
 
+/**
+ * Abstract: Tests to see if database inits properly with users
+ * Contributors: Alex
+ */
+
 @RunWith(AndroidJUnit4.class)
 public class DatabaseInitInstrumentedTest {
 
