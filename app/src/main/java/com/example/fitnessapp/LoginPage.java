@@ -12,6 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/**
+ * Abstract: Activity that allows user to login to app with already created account
+ * Contributors: Alex, Jeremy
+ */
+
 public class LoginPage extends AppCompatActivity {
 
     private FitnessAppDB fdb;
@@ -37,7 +42,10 @@ public class LoginPage extends AppCompatActivity {
         });
     }
 
-
+    /**
+     * Function Description: signs in user if credentials are valid, otherwise, display error
+     * @param view
+     */
     public void signIn(View view){
         String username = String.valueOf(et_username.getText());
         String password = String.valueOf(et_password.getText());
@@ -63,6 +71,13 @@ public class LoginPage extends AppCompatActivity {
         finish();
     }
 
+    /**
+     * Function Description: Checks if user username/password matches with that in database
+     * @param username
+     * @param password
+     * @param db
+     * @return String
+     */
     public static String isValidCredentials(String username, String password, FitnessAppDB db) {
         if (username.isEmpty()) {
             return "wrong username";
@@ -88,6 +103,9 @@ public class LoginPage extends AppCompatActivity {
         return "wrong user";
     }
 
+    /**
+     * Function Description: clears highlight/focus on all edit texts
+     */
     public void clearFocus() {
         et_password.clearFocus();
         et_username.clearFocus();

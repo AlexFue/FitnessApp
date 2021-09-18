@@ -9,6 +9,10 @@ import android.content.Context;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
+/**
+ * Abstract: Tests if username/password is invalid and if both credentials are valid.
+ */
+
 @RunWith(AndroidJUnit4.class)
 public class LoginPageInstrumentedTest {
 
