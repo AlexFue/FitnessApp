@@ -1,5 +1,10 @@
 package com.example.fitnessapp;
 
+/**
+ * Abstract: Java class to represent the results object in comment endpoint
+ * Contributors: Alex
+ */
+
 public class CommentResults {
     private int id;
     private int exercise;
