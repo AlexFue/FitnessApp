@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Abstract: Activity to allow user to create a new account for fitness app and login
+ * Contributors: Alex
+ */
+
 public class CreateAccount extends AppCompatActivity {
 
     private EditText et_username;
@@ -29,6 +34,10 @@ public class CreateAccount extends AppCompatActivity {
         btn_create = findViewById(R.id.btn_create);
         btn_back = findViewById(R.id.btn_back);
 
+
+        /**
+         * Process description: is username/password is valid, user gets added to database and logins to app
+         */
         btn_create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +75,13 @@ public class CreateAccount extends AppCompatActivity {
         });
     }
 
+
+    /**
+     * Function description: checks to see if username is valid and in the database
+     * @param username
+     * @param db
+     * @return boolean
+     */
     public static boolean isValidUsername(String username, FitnessAppDB db) {
         if(!username.equals("")) {
             User found = db.user().findUserByUsername(username);
@@ -76,6 +92,11 @@ public class CreateAccount extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * Function description: checks to see if a password is valid
+     * @param password
+     * @return
+     */
     public static boolean isValidPassword(String password) {
         if(!password.equals("")){
             return true;
