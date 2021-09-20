@@ -79,6 +79,7 @@ This section should list any major frameworks that you built your project using.
 * [JUnit5](https://junit.org/junit4/)
 * [Room Database](https://developer.android.com/reference/android/arch/persistence/room/RoomDatabase)
 * [Retrofit](https://square.github.io/retrofit/)
+* [Exercise API](https://wger.de/en/software/api)
 
 
 
